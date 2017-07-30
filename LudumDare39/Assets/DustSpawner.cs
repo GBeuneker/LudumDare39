@@ -27,8 +27,8 @@ public class DustSpawner : MonoBehaviour
         float minPos_y = -roomSize.y / 2 + dustSize.y;
         float maxPos_y = roomSize.y / 2 - dustSize.y;
 
-        for (float y = minPos_y; y < maxPos_y; y += stepSize.y * Random.Range(0.5f, 1.5f))
-            for (float x = minPos_x; x < maxPos_x; x += stepSize.x * Random.Range(0.5f, 1.5f))
+        for (float y = minPos_y; y < maxPos_y; y += stepSize.y)
+            for (float x = minPos_x; x < maxPos_x; x += stepSize.x)
             {
                 SpawnDust(dustObject, new Vector2(x, y));
             }
@@ -37,6 +37,8 @@ public class DustSpawner : MonoBehaviour
     private void SpawnDust(GameObject dust, Vector2 position)
     {
         float randomRotation = Random.Range(0, 360);
+        Vector2 randomOffset = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+
         GameObject newDust = Instantiate(dust, position, Quaternion.Euler(0, 0, randomRotation));
         newDust.transform.SetParent(transform);
     }
