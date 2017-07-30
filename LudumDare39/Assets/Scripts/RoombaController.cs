@@ -26,14 +26,14 @@ public class RoombaController : MonoBehaviour
     private bool IsMovementBlocked()
     {
         // Check if we hit a wall
-        Vector2 checkPosition = transform.position + transform.right * (collider.bounds.extents.x + 0.1f);
-        RaycastHit2D hit = Physics2D.Raycast(checkPosition, transform.right, 0.1f);
+        Vector2 checkPosition = transform.position + -transform.up * (collider.bounds.extents.x + 0.1f);
+        RaycastHit2D hit = Physics2D.Raycast(checkPosition, -transform.up, 0.1f);
         if (hit.collider != null)
             return true;
 
         // Determine if the cord is stopping us
         Vector2 cordDirection = plugScript.transform.position - transform.position;
-        Vector2 driveDirection = transform.right;
+        Vector2 driveDirection = -transform.up;
         if (Vector2.Distance(transform.position, plugScript.transform.position) >= maxDistance - 1 && Vector2.Angle(driveDirection, cordDirection) >= 150)
             return true;
 
@@ -67,7 +67,7 @@ public class RoombaController : MonoBehaviour
                 while (timeDriven < driveTime && !IsMovementBlocked() && plugScript.PluggedIn)
                 {
                     timeDriven += Time.deltaTime;
-                    body.AddForce(transform.right * movingSpeed * body.mass, ForceMode2D.Force);
+                    body.AddForce(-transform.up * movingSpeed * body.mass, ForceMode2D.Force);
                     body.velocity = Vector2.ClampMagnitude(body.velocity, movingSpeed);
 
                     yield return null;

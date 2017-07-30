@@ -13,25 +13,31 @@ public class DustSpawner : MonoBehaviour
     {
         dustObject = Resources.Load<GameObject>("Prefabs/Dust");
         roomSize = GetComponent<SpriteRenderer>().bounds.size;
-        stepSize = dustObject.GetComponent<SpriteRenderer>().bounds.size / 1.5f;
+        stepSize = dustObject.GetComponent<SpriteRenderer>().bounds.size / 2;
 
         GenerateDust();
     }
 
     private void GenerateDust()
     {
-        for (float y = 0; y < roomSize.y; y += stepSize.y * Random.Range(0.5f, 2f))
-            for (float x = 0; x < roomSize.x; x += stepSize.x * Random.Range(0.5f, 2f))
+        Vector2 dustSize = dustObject.GetComponent<SpriteRenderer>().bounds.size / 2;
+
+        float minPos_x = -roomSize.x / 2 + dustSize.x;
+        float maxPos_x = roomSize.x / 2 - dustSize.x;
+        float minPos_y = -roomSize.y / 2 + dustSize.y;
+        float maxPos_y = roomSize.y / 2 - dustSize.y;
+
+        for (float y = minPos_y; y < maxPos_y; y += stepSize.y * Random.Range(0.5f, 1.5f))
+            for (float x = minPos_x; x < maxPos_x; x += stepSize.x * Random.Range(0.5f, 1.5f))
             {
-                float xPos = x - roomSize.x / 2;
-                float yPos = y - roomSize.y / 2;
-                SpawnDust(dustObject, new Vector2(xPos, yPos));
+                SpawnDust(dustObject, new Vector2(x, y));
             }
     }
 
     private void SpawnDust(GameObject dust, Vector2 position)
     {
-        GameObject newDust = Instantiate(dust, position, Quaternion.identity);
+        float randomRotation = Random.Range(0, 360);
+        GameObject newDust = Instantiate(dust, position, Quaternion.Euler(0, 0, randomRotation));
         newDust.transform.SetParent(transform);
     }
 }

@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PlayerNumber
+{
+    Player_1 = 1,
+    Player_2,
+    Player_3,
+    Player_4
+}
+
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(BoxCollider2D))]
 public class PlayerController : MonoBehaviour
 {
-    public enum PlayerNumber
-    {
-        Player_1 = 1,
-        Player_2,
-        Player_3,
-        Player_4
-    }
-
     Rigidbody2D rb2d;
     public float speed = 200.0f;
     public PlayerNumber playerNumber;
