@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Linq;
 using UnityEngine;
 
 public class TitlescreenScript : MonoBehaviour
@@ -22,15 +21,22 @@ public class TitlescreenScript : MonoBehaviour
 
         if (Input.GetButtonDown("Cancel_1"))
         {
-            characterSelectAnimator.SetTrigger("Disappear");
-            menuAnimator.SetTrigger("Appear");
+            ExitCharacterSelection();
         }
     }
 
-    public void ToCharacterSelection()
+    public void EnterCharacterSelection()
     {
         menuAnimator.SetTrigger("Disappear");
         characterSelectAnimator.SetTrigger("Appear");
+    }
+
+    public void ExitCharacterSelection()
+    {
+        characterSelectAnimator.SetTrigger("Disappear");
+        characterSelectAnimator.GetComponentsInChildren<CharacterSelect>().ToList().ForEach(c => c.UnReadyPlayer());
+
+        menuAnimator.SetTrigger("Appear");
     }
 
     public void PressStart()

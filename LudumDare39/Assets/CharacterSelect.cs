@@ -29,7 +29,7 @@ public class CharacterSelect : MonoBehaviour
             ReadyPlayer();
     }
 
-    private void ReadyPlayer()
+    public void ReadyPlayer()
     {
         if (IsReady)
             return;
@@ -41,7 +41,7 @@ public class CharacterSelect : MonoBehaviour
         playerImage.gameObject.SetActive(IsReady);
     }
 
-    private void UnReadyPlayer()
+    public void UnReadyPlayer()
     {
         if (!IsReady)
             return;
