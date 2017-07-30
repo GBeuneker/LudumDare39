@@ -23,7 +23,7 @@ public class ScoreScript : MonoBehaviour {
     public void UpdateScore(int playerNumber)
     {
         points[playerNumber - 1] += 10;
-        texts[playerNumber - 1].text = "Player " + playerNumber.ToString() + ": " + points[playerNumber - 1].ToString();
+        texts[playerNumber - 1].text = "P" + playerNumber.ToString() + ": " + points[playerNumber - 1].ToString();
     }
 
 }
