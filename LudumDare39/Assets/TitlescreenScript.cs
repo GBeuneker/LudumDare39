@@ -19,6 +19,12 @@ public class TitlescreenScript : MonoBehaviour
     {
         if (Input.anyKeyDown && !startedMenu)
             PressStart();
+
+        if (Input.GetButtonDown("Cancel_1"))
+        {
+            characterSelectAnimator.SetTrigger("Disappear");
+            menuAnimator.SetTrigger("Appear");
+        }
     }
 
     public void ToCharacterSelection()
