@@ -6,11 +6,8 @@ public class RoombaScript : MonoBehaviour
 {
     [SerializeField]
     private PlugScript plugScript;
-
-    // Use this for initialization
-    void Start()
-    {
-    }
+    [SerializeField]
+    private PlayerNumber playerNumber;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -23,11 +20,16 @@ public class RoombaScript : MonoBehaviour
 
     private void IncreaseScore()
     {
-        Debug.Log("+10 points!");
+        Debug.Log(playerNumber + " +10 points!");
     }
 
     public PlugScript PlugScript
     {
         get { return plugScript; }
+    }
+
+    public PlayerNumber PlayerNumber
+    {
+        get { return playerNumber; }
     }
 }
