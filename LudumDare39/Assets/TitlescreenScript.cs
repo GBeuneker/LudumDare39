@@ -5,7 +5,9 @@ using UnityEngine;
 public class TitlescreenScript : MonoBehaviour
 {
     [SerializeField]
-    Animator titleAnimator;
+    Animator titleAnimator, startAnimator, menuAnimator, characterSelectAnimator;
+
+    private bool startedMenu = false;
 
     // Use this for initialization
     void Start()
@@ -15,16 +17,21 @@ public class TitlescreenScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.anyKeyDown && !startedMenu)
+            PressStart();
     }
 
     public void ToCharacterSelection()
     {
-        titleAnimator.SetTrigger("Exit");
-        titleAnimator.SetTrigger("ToCharacterSelection");
+        menuAnimator.SetTrigger("Disappear");
+        characterSelectAnimator.SetTrigger("Appear");
     }
 
-    public void EnableButtons()
+    public void PressStart()
     {
-        GameObject.Find("Start").SetActive(true);
+        startedMenu = true;
+
+        startAnimator.SetTrigger("Disappear");
+        menuAnimator.SetTrigger("Appear");
     }
 }
