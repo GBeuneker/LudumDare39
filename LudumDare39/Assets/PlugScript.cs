@@ -9,7 +9,6 @@ public class PlugScript : MonoBehaviour
 
     private void Start()
     {
-        PluggedIn = true;
     }
 
     /// <summary> Grab the plug and remember who grabbed it. </summary>
@@ -25,8 +24,9 @@ public class PlugScript : MonoBehaviour
         PluggedIn = true;
         this.socket = socket;
 
-        transform.position = socket.transform.position + socket.GetComponent<SpriteRenderer>().bounds.size.x / 2 * socket.transform.right;
+        transform.position = socket.transform.position;
         transform.rotation = socket.transform.rotation;
+        playerHoldingPlug = null;
     }
 
     /// <summary> Plug out the plug. </summary>
