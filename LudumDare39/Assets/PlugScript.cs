@@ -24,7 +24,7 @@ public class PlugScript : MonoBehaviour
         PluggedIn = true;
         this.socket = socket;
 
-        transform.position = socket.transform.position;
+        transform.position = socket.transform.position - socket.transform.up * 0.25f;
         transform.rotation = socket.transform.rotation;
         playerHoldingPlug = null;
     }

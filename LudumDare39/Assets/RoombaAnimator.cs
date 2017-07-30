@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class RoombaAnimator : MonoBehaviour
 {
-    public PlayerNumber playerNumber;
     public float animationDelay = 0.5f;
 
+    private PlayerNumber playerNumber;
     private SpriteRenderer spriteRenderer;
     private Sprite[] frames;
 
@@ -14,6 +14,7 @@ public class RoombaAnimator : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        playerNumber = GetComponent<RoombaScript>().PlayerNumber;
 
         LoadSpriteFrames();
         StartCoroutine(AnimateRoomba());
@@ -28,11 +29,8 @@ public class RoombaAnimator : MonoBehaviour
     {
         while (true)
         {
-            frames = Resources.LoadAll<Sprite>("Sprites/" + playerNumber);
             while (GetComponent<RoombaScript>().PlugScript.PluggedIn)
             {
-                frames = Resources.LoadAll<Sprite>("Sprites/" + playerNumber);
-
                 spriteRenderer.sprite = frames[0];
                 yield return new WaitForSeconds(animationDelay);
                 spriteRenderer.sprite = frames[1];
