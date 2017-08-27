@@ -382,6 +382,12 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: cba03df2542930149921f7fd3f54ff2d,
         type: 3}
+    - target: {fileID: 114588118319454444, guid: 646d64472a7c4e94da4c29bd80b0736c,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cba03df2542930149921f7fd3f54ff2d,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 646d64472a7c4e94da4c29bd80b0736c, type: 2}
   m_IsPrefabParent: 0
@@ -1657,7 +1663,7 @@ MonoBehaviour:
   m_CancelButton: Cancel_1
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
+  m_ForceModuleActive: 1
 --- !u!114 &1733506054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1795,7 +1801,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e44e27cd96f91884087f22e25b44b776, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titleAnimator: {fileID: 1132214837}
   startAnimator: {fileID: 1440999342}
   menuAnimator: {fileID: 555997491}
   characterSelectAnimator: {fileID: 1079750075}
