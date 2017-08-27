@@ -34,6 +34,7 @@ public class RoombaScript : MonoBehaviour
     public PlayerNumber PlayerNumber
     {
         get { return playerNumber; }
+        set { playerNumber = value; }
     }
 
     public ScoreScript ScoreScript
