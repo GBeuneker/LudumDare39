@@ -16,17 +16,13 @@ public class CharacterSelect : MonoBehaviour
 
     private string cachedText;
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
         if (Input.GetButton("Grab_" + (int)playerNumber))
             ReadyPlayer();
+        else if (Input.GetButton("Cancel_" + (int)playerNumber))
+            UnReadyPlayer();
     }
 
     public void ReadyPlayer()
