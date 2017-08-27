@@ -27,16 +27,16 @@ public class TitlescreenScript : MonoBehaviour
 
     public void EnterCharacterSelection()
     {
-        menuAnimator.SetTrigger("Disappear");
-        characterSelectAnimator.SetTrigger("Appear");
+        menuAnimator.SetBool("Visible", false);
+        characterSelectAnimator.SetBool("Visible", true);
     }
 
     public void ExitCharacterSelection()
     {
-        characterSelectAnimator.SetTrigger("Disappear");
+        characterSelectAnimator.SetBool("Visible", false);
         characterSelectAnimator.GetComponentsInChildren<CharacterSelect>().ToList().ForEach(c => c.UnReadyPlayer());
 
-        menuAnimator.SetTrigger("Appear");
+        menuAnimator.SetBool("Visible", true);
     }
 
     public void PressStart()
@@ -44,6 +44,6 @@ public class TitlescreenScript : MonoBehaviour
         startedMenu = true;
 
         startAnimator.SetTrigger("Disappear");
-        menuAnimator.SetTrigger("Appear");
+        menuAnimator.SetBool("Visible", true);
     }
 }
