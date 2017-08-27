@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TitlescreenScript : MonoBehaviour
 {
@@ -45,5 +46,21 @@ public class TitlescreenScript : MonoBehaviour
 
         startAnimator.SetTrigger("Disappear");
         menuAnimator.SetBool("Visible", true);
+    }
+
+    public void StartGame()
+    {
+        CharacterSelect[] characters = GetComponentsInChildren<CharacterSelect>();
+        // Clear the list of active players
+        GameInformation.Instance.ActivePlayers.Clear();
+
+        // Add all the readied players to the list of active players
+        foreach (CharacterSelect character in characters)
+        {
+            if (character.IsReady)
+                GameInformation.Instance.ActivePlayers.Add(character.PlayerNumber);
+        }
+
+        SceneManager.LoadScene("Main");
     }
 }

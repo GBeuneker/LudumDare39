@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RoombaAnimator : MonoBehaviour
 {
+    private static GameObject instance;
+
     public float animationDelay = 0.5f;
 
     private PlayerNumber playerNumber;

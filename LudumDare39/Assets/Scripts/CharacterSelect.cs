@@ -50,4 +50,9 @@ public class CharacterSelect : MonoBehaviour
         playerText.text = cachedText;
         playerImage.gameObject.SetActive(IsReady);
     }
+
+    public PlayerNumber PlayerNumber
+    {
+        get { return playerNumber; }
+    }
 }
